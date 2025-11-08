@@ -7,9 +7,51 @@ import { ActivityIndicator, View } from 'react-native';
 
 import TabNavigator from './app/(tabs)/_layout';
 import AuthScreen from './app/auth';
+import ProductDetailScreen from './app/product/[id]';
+import CheckoutScreen from './app/checkout';
+import OrderDetailScreen from './app/order/[id]';
 import { useAuthStore } from './services/authStore';
 
 const Stack = createNativeStackNavigator();
+
+function MainNavigator() {
+  return (
+    <Stack.Navigator>
+      <Stack.Screen
+        name="Tabs"
+        component={TabNavigator}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="ProductDetail"
+        component={ProductDetailScreen}
+        options={{
+          title: 'Product Details',
+          headerShown: true,
+          headerBackTitleVisible: false
+        }}
+      />
+      <Stack.Screen
+        name="Checkout"
+        component={CheckoutScreen}
+        options={{
+          title: 'Checkout',
+          headerShown: true,
+          headerBackTitleVisible: false
+        }}
+      />
+      <Stack.Screen
+        name="OrderDetail"
+        component={OrderDetailScreen}
+        options={{
+          title: 'Order Details',
+          headerShown: true,
+          headerBackTitleVisible: false
+        }}
+      />
+    </Stack.Navigator>
+  );
+}
 
 export default function App() {
   const { user, isLoading, checkAuth } = useAuthStore();
@@ -32,7 +74,7 @@ export default function App() {
         <StatusBar style="light" backgroundColor="#1976d2" />
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           {user ? (
-            <Stack.Screen name="Main" component={TabNavigator} />
+            <Stack.Screen name="Main" component={MainNavigator} />
           ) : (
             <Stack.Screen name="Auth" component={AuthScreen} />
           )}
