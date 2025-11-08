@@ -11,7 +11,8 @@ import {
 import { Ionicons } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
-import { useCartStore, useAuthStore } from './services/cartStore';
+import { useCartStore } from './services/cartStore';
+import { useAuthStore } from './services/authStore';
 import { DELIVERY_OPTIONS } from './constants';
 import { formatCurrency, generateOrderReference } from './utils/formatCurrency';
 import { COLORS, SIZES } from './constants';
