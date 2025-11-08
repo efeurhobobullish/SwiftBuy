@@ -120,7 +120,7 @@ export default function HomeScreen() {
   const renderProduct = ({ item }: { item: Product }) => (
     <TouchableOpacity
       style={styles.productCard}
-      onPress={() => router.push(`/product/${item.id}` as any)}
+      onPress={() => navigation.navigate('ProductDetail', { productId: item.id })}
     >
       <Image source={{ uri: item.image }} style={styles.productImage} />
       <View style={styles.productInfo}>
