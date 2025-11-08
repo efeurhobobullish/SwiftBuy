@@ -27,7 +27,7 @@ export default function HomeScreen() {
   const [searchQuery, setSearchQuery] = useState('');
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
-  const router = useRouter();
+  const navigation = useNavigation<any>();
   const addItem = useCartStore((state) => state.addItem);
 
   useEffect(() => {
